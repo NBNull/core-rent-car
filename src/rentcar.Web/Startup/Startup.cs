@@ -26,6 +26,7 @@ namespace rentcar.Web.Startup
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen();
             //MVC
             services.AddMvc(options =>
             {
@@ -44,6 +45,8 @@ namespace rentcar.Web.Startup
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseSwagger();
+            app.UseSwaggerUi();
             app.UseAbp(); //Initializes ABP framework.
 
             if (env.IsDevelopment())

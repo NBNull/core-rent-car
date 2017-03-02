@@ -7,6 +7,7 @@ using rentcar.Configuration;
 using rentcar.MultiTenancy;
 using rentcar.Users;
 using rentcar.Web;
+using rentcar.Cars;
 
 namespace rentcar.EntityFramework
 {
@@ -14,8 +15,10 @@ namespace rentcar.EntityFramework
     public class rentcarDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         /* Define an IDbSet for each entity of the application */
+        public DbSet<Car> Cars { get; set; }
 
         /* Default constructor is needed for EF command line tool. */
+
         public rentcarDbContext()
             : base(GetConnectionString())
         {

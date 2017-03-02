@@ -13,7 +13,6 @@
       "version": "1.1.0-preview4-final",
       "type": "build"
     },
-    "Swashbuckle": "6.0.0-beta902",
     "AspNet.Security.OpenIdConnect.Server": "1.0.0-beta6-final",
     "PaulMiami.AspNetCore.Mvc.Recaptcha": "1.1.1",
     "Castle.LoggingFacility.MsLogging": "1.1.0",
@@ -37,8 +36,8 @@
     "Abp.Owin": "1.4.1",
     "Abp.RedisCache": "1.4.1",
     "Abp.Web.SignalR": "1.4.1",
-    "Microsoft.AspNetCore.Mvc": "1.1.1"
-  },
+    "Microsoft.AspNetCore.Mvc": "1.1.1",
+    "Swashbuckle": "6.0.0-beta902"  },
 
   "tools": {
     "Microsoft.Extensions.SecretManager.Tools": "1.1.0-preview4-final",
