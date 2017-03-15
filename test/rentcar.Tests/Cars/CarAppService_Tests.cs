@@ -32,17 +32,41 @@ namespace rentcar.Tests.Cars
         public async Task CreateCar_Test()
         {
             await _carAppService.Create(
-                new CarDto
-                {
-                    Model = "206",
-                    Status = 0,
-                    Year = "2017"
-                });
+                 new CarDto
+                 {
+                     Model = "206",
+                     Status = 0,
+                     Year = "2017"
+                 });
 
             await UsingDbContextAsync(async context =>
             {
                 var carro = await context.Cars.FirstOrDefaultAsync(c => c.Model == "206");
                 carro.ShouldNotBeNull();
+            });
+        }
+
+        [Fact]
+        public async Task RentCar_Test()
+        {
+            CarDto carDto;
+            carDto = await _carAppService.Create(
+                 new CarDto
+                 {
+                     Model = "206",
+                     Status = 0,
+                     Year = "2017"
+                 });
+
+
+            carDto.Status = 1;
+            await _carAppService.Update(carDto);
+
+            await UsingDbContextAsync(async context =>
+            {
+                var carro = await context.Cars.FirstOrDefaultAsync(c => c.Id == carDto.Id);
+                carro.ShouldNotBeNull();
+                carro.Status.ShouldBe(carDto.Status);
             });
         }
     }

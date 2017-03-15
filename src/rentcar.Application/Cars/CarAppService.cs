@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Domain.Repositories;
+using Abp.Application.Services.Dto;
 
 namespace rentcar.Cars
 {
@@ -15,6 +16,14 @@ namespace rentcar.Cars
             : base(repository)
         {
             _repository = repository;
+        }
+
+       
+        public async Task UpdateRentCar(EntityDto<int> input)
+        {
+            var car = await _repository.GetAsync(input.Id);
+            car.Status = 1;
+            await _repository.UpdateAsync(car);
         }
     }
 }
